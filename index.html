@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		body{
+			background-image: url("project_background.png");
+			background-repeat : no-repeat;
+		}
+	</style>
+</head>
+<body>
+<div class="row" style="margin-top: 40px;">
+	<div class="col-md-3"></div>
+	<div class="col-md-9">
+		<p style="font-weight: bold;margin-bottom: 0px; ">BASIC</p>
+		<p style="font-weight: bold;">INFORMATION</p>
+		<hr>
+		<div id="basic"></div>
+		<p style="font-weight: bold;margin-top: 50px; ">EDUCATION</p>
+		<hr>
+		<div id="education">
+		</div>
+		<p style="font-weight: bold;margin-top: 50px; ">PROFESSIONAL EXPERIENCE</p>
+		<hr>
+		<div id="personal"></div>
+	</div>
+</div>
+<script>
+	//Profile data
+	var jsonData = [{
+		"basic": "Full stack web developer with 1+ years experience, demonstrated ability to complete high-end projects in deadline-oriented environments and effectively communicated with wide range of clients and coworkers.",
+		
+		"education":[{"class":"X", "university":"DAV Public School,Hehal, Ranchi,Jharkhand","year":2008,"marks":83.8},
+					 {"class":"XII", "university":"DAV Public School,Hehal, Ranchi,Jharkhand","year":2010,"marks":73.8},
+					 {"class":"BCA", "university":"BIRLA INSTITUTE OF TECHNOLOGY,MESRA, Ranchi,Jharkhand","year":2013,"marks":87},
+					 {"class":"MCA", "university":"BIRLA INSTITUTE OF TECHNOLOGY,MESRA, Ranchi,Jharkhand","year":2017,"marks":85}
+		],
+		"professional":[{"app_name":"Kaizen Management System", "description": "It is designed to help R&D team to record their kaizens(Continuous improvements)."},{"app_name":"Login module", "description":"for every application"},{"app_name":"Vendor Registration Application","description":"VAPT testing points for Vendor Registration Application"}
+		],
+		"contact":[{"address":"Sneh Nagar, Itki Road, P.O. Hehal,Ranchi,Jharkhand","email":"gurkiratkaur19@yahoo.com"}]
+	}];
+	
+	var basic = document.getElementById('basic');
+	console.log(jsonData);
+	basic.innerHTML= jsonData[0].basic;
+	
+	var education = document.getElementById('education');
+	var edu = jsonData[0].education;
+
+	var ul= document.getElementById("myList");
+	edu.forEach(function(data){
+		var check = "Scored "+data.marks + " in " +data.class + " from "+ data.university +" in the year "+data.year;
+		var li= document.createElement("p");
+		var text = document.createTextNode(check);
+		li.appendChild(text);
+		education.appendChild(li);
+	});
+	
+	var personal=document.getElementById('personal');
+	var professionalData = jsonData[0].professional;
+	professionalData.forEach(function(data){
+		var check = data.app_name + " : " + data.description;
+		var p= document.createElement("p");
+		var text = document.createTextNode(check);
+		p.appendChild(text);
+		personal.appendChild(p);
+	});
+	
+</script>
+</body>
